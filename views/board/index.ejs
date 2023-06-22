@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/board/index.css">
+        <title>NODEJS-CRUD-TEST</title>
+    </head>
+    <body>
+        <h1>게시글 조회</h1>
+        <div class="button-group">
+            <a href="/board/write" class="btn-write">글쓰기</a>
+            <br>
+            <a href="/" class="btn-write">홈으로</a>
+        </div>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>수정일</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i<boardList.length; i++) { %>
+                    <tr>
+                        <td><%= boardList[i].id %></td>
+                        <td><a href="/board/<%= boardList[i].id %>"><%= boardList[i].title %></a></td>
+                        <td><%= boardList[i].author %></td>
+                        <td><%= boardList[i].created_at ? new Date(boardList[i].created_at) .toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', hour12: false }) .replace(/T/, ' ').replace(/\..+/, '') : '' %></td>
+                        <td><%= boardList[i].updated_at ? new Date(boardList[i].updated_at) .toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', hour12: false }) .replace(/T/, ' ').replace(/\..+/, '') : '' %></td>
+                        <td><%= boardList[i].view %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </body>
+        </html>

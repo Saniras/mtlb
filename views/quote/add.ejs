@@ -1,0 +1,263 @@
+<html>
+  <head>
+    <title>Add Item</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <%- include('../partials/navbar') %>
+      <div class="container-fluid page-body-wrapper">
+        <%- include('../partials/sidebar') %>
+
+        <div class="main-panel">
+              <div class="content-wrapper">
+                <form action="/items/add" method="POST">
+                  <div class="container-fluid">
+                    
+                      <div class="row">
+                        
+                        <div class="col-lg-8 grid-margin stretch-card mt-3 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Shipping Request UZB</h4>
+                                
+                                    <hr>
+                                    <div class="row"> 
+                                          <div class="form-group col-sm-4">
+                                              <label for="status">Status:</label>
+                                              <select class="form-control" id="status" name="status" required>
+                                                  <option value>--Select Status--</option>
+                                                  <option value="Checking">Checking</option>
+                                                  <option value="Cancel">Cancel</option>
+                                                  <option value="진행중">진행중</option>
+                                              </select>
+                                          </div>
+                                          <div class="form-group col-sm-4">
+                                            <label for="shpt" class="col-sm-4">Shpt #:</label>
+                                            <input type="text" class="form-control" id="shpt"
+                                              name="shpt" />
+                                          </div>
+                                          <div class="form-group col-sm-4">
+                                            <label for="iqr">Inquiry#:</label>
+                                            <input type="text" class="form-control" id="iqr"
+                                              name="iqr" required />
+                                          </div>
+                                          <div class="form-group col-sm-4">
+                                            <label for="order_date">ORDER DATE:</label>
+                                            <input
+                                              type="date"
+                                              class="form-control"
+                                              id="order_date"
+                                              name="order_date" />
+                                          </div>
+                                    </div>
+                                          <div class="form-group col-sm-8">
+                                            <label for="shpr">Shipper:</label>
+                                            <input
+                                              type="text"
+                                              class="form-control"
+                                              id="shpr"
+                                              name="shpr"
+                                              required />
+                                          </div>
+                                          <div class="form-group col-sm-10">
+                                            <label for="address">Address:</label>
+                                            <input type="text" class="form-control" id="address"
+                                              name="address" />
+                                          </div>
+                                          <div class="form-group col-sm-10">
+                                            <label for="contact">CONTACT:</label>
+                                            <input type="text" class="form-control" id="contact"
+                                              name="contact" />
+                                          </div>
+                                          <div class="form-group col-sm-10">
+                                            <label for="item">ITEM:</label>
+                                            <input
+                                              type="text"
+                                              class="form-control"
+                                              id="item"
+                                              name="item"
+                                              required />
+                                          </div>
+                                    <div class="row">
+                                          <div class="form-group col-sm-3">
+                                            <label for="pol">POL:</label>
+                                            <input type="text" class="form-control" id="pol"
+                                              name="pol" />
+                                          </div>
+                                          <div class="form-group col-sm-3">
+                                            <label for="pod">POD:</label>
+                                            <input
+                                              type="text"
+                                              class="form-control"
+                                              id="pod"
+                                              name="pod"
+                                              required />
+                                          </div>
+                                          <div class="form-group col-sm-3">
+                                            <label for="mode">MODE:</label>
+                                            <select class="form-control" id="mode" name="mode">
+                                              <option value>--Select Status--</option>
+                                              <option value="Checking">Rail</option>
+                                              <option value="Checking">Truck</option>
+                                            </select>
+                                          </div>
+                                          <div class="form-group col-sm-3">
+                                            <label for="type">TYPE:</label>
+                                            <input type="text" class="form-control" id="type" name="type" />
+                                          </div>
+                                    </div>
+                                       
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Tracking 정보입력</h4>
+                                    <hr>
+                                    <div class="form-group">
+                              <label for="current" class="col-sm-6">Current Location:</label>
+                              <input type="text" class="form-control" id="current" name="current" />
+                          </div>
+                                  <p class="card-subtitle">
+                                    <h5 style="color: #343642; font-weight: bold;">Origin</h5>
+                                  </p>
+                                  <div class="row">
+                                  <div class="form-group col-sm-6">
+                                    <label for="etd" class="col-sm-6">ETD:</label>
+                                    <input type="date" class="form-control" id="etd"
+                                      name="etd1" />
+                                  </div>
+                                  <div class="form-group col-sm-6">
+                                    <label for="atd1" class="col-sm-6">ATD:</label>
+                                    <input type="date" class="form-control" id="atd1"
+                                      name="atd1" />
+                                  </div>
+                                </div>
+                                  <p class="card-subtitle">
+                                    <h5 style="color: #343642; font-weight: bold;">Border</h5>
+                                  </p>
+                                  <div class="row">
+                                    <div class="form-group col-sm-6">
+                                      <label for="eta2" class="col-sm-6">ETA:</label>
+                                      <input type="date" class="form-control" id="eta2"
+                                        name="etd2" />
+                                    </div>
+                                    <div class="form-group col-sm-6">
+                                      <label for="ata2" class="col-sm-6">ATA:</label>
+                                      <input type="date" class="form-control" id="ata2"
+                                        name="ata2" />
+                                      </div>
+                                    </div>
+                                        <div class="row">
+                                  <div class="form-group col-sm-6">
+                                    <label for="etd2" class="col-sm-6">ETD:</label>
+                                    <input type="date" class="form-control" id="etd2"
+                                      name="etd2" />
+                                  </div>
+                                  <div class="form-group col-sm-6">
+                                    <label for="atd2" class="col-sm-6">ATD:</label>
+                                    <input type="date" class="form-control" id="atd2"
+                                      name="atd2" />
+                                  </div>
+                                </div>
+                                <p class="card-subtitle">
+                                  <h5 style="color: #343642; font-weight: bold;">Station</h5>
+                                </p>
+                                <div class="row">
+                                  <div class="form-group col-sm-6">
+                                    <label for="eta3" class="col-sm-6">ETA:</label>
+                                    <input type="date" class="form-control" id="eta3"
+                                      name="eta3" />
+                                  </div>
+                                  <div class="form-group col-sm-6">
+                                    <label for="ata3" class="col-sm-6">ATA:</label>
+                                    <input type="date" class="form-control" id="ata3"
+                                      name="ata3" />
+                                  </div>
+                                </div>
+                                  <p class="card-subtitle">
+                                    <h5 style="color: #343642; font-weight: bold;">Final</h5>
+                                  </p>
+                                  <div class="row">
+                                  <div class="form-group col-sm-6">
+                                    <label for="eta3" class="col-sm-6">ETA:</label>
+                                    <input type="date" class="form-control" id="eta3"
+                                      name="eta3" />
+                                  </div>
+                                  <div class="form-group col-sm-6">
+                                    <label for="ata3" class="col-sm-6">ATA:</label>
+                                    <input type="date" class="form-control" id="ata3"
+                                      name="ata3" />
+                                    </div>
+                                  </div>
+                           
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Cost Detail</h4>
+                                      <hr>
+                                      <div class="row">
+                                              <div class="form-group col-sm-6">
+                                                  <label for="cost_details">원가 세부:</label>
+                                                  <input type="text" class="form-control" id="cost_details" name="cost_details" />
+                                              </div>
+                                              <div class="form-group col-sm-6">
+                                                <label for="cost">원가</label>
+                                                <input type="text" class="form-control" id="cost"
+                                                  name="cost" />
+                                              </div>
+                                        </div>
+                                        <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                  <label for="selling_detail">청구 세부:</label>
+                                                  <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="selling_detail"
+                                                    name="selling_detail" />
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                  <label for="selling">청구가:</label>
+                                                  <input type="text" class="form-control" id="selling"
+                                                    name="selling" />
+                                                </div>
+                                          </div>
+                                                <div class="form-group col-sm-6">
+                                                  <label for="profit">PROFIT:</label>
+                                                  <input type="text" class="form-control" id="profit" name="profit" />
+                                                </div>
+                                  </div>
+                              </div>
+                        </div>
+                      
+                      </div>
+                      <button type="submit" class="btn btn-primary">확인</button>
+                  </div>
+                </form>
+                </div>
+        </div>
+      </div>
+    </div>
+
+     
+              <%- include('../partials/footer') %>
+
+              <!-- Bootstrap JS -->
+              <script
+                src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+              <script
+                src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+                crossorigin="anonymous"></script>
+            </body>
+          </html>

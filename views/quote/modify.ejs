@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Modify Item</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container my-4">
+      <h1>Modify Item</h1>
+
+      <form action="/items/edit/<%= item.id %>" method="POST">
+        <div class="form-group">
+          <label for="id">ID:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="id"
+            name="id"
+            value="<%= item.id %>"
+            readonly
+          />
+        </div>
+        <div class="form-group">
+          <label for="status">status:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="status"
+            name="status"
+            value="<%= item.status %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="shpt">Shipment #:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="shpt"
+            name="shpt"
+            value="<%= item.shpt %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="iqr">Inquiry#:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="iqr"
+            name="iqr"
+            value="<%= item.iqr %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="shpr">SHPR:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="shpr"
+            name="shpr"
+            value="<%= item.shpr %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            name="address"
+            value="<%= item.address %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="contact">CONTACT:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="contact"
+            name="contact"
+            value="<%= item.contact%>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="item">ITEM:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="item"
+            name="item"
+            value="<%= item.item %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="pol">POL:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="pol"
+            name="pol"
+            value="<%= item.pol %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="pod">POD:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="pod"
+            name="pod"
+            value="<%= item.pod %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="mode">MODE:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="mode"
+            name="mode"
+            value="<%= item.mode %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="type">TYPE:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="type"
+            name="type"
+            value="<%= item.type %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="cost_details">원가 세부:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cost_details"
+            name="cost_details"
+            value="<%= item.cost_details %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="cost">원가</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cost"
+            name="cost"
+            value="<%= item.cost %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="selling_detail">청구 세부:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="selling_detail"
+            name="selling_detail"
+            value="<%= item.selling_detail %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="selling">청구가:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="selling"
+            name="selling"
+            value="<%= item.selling %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="profit">PROFIT:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="profit"
+            name="profit"
+            value="<%= item.profit %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="order_date">ORDER DATE:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="order_date"
+            name="order_date"
+            value="<%= item.order_date %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="etd">ETD:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="etd"
+            name="etd"
+            value="<%= item.date %>"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Modify Item</button>
+      </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

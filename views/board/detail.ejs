@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/board/detail.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+        <h1>게시글 상세 페이지</h1>
+        <div class="content-box">
+            <table>
+                <tr>
+                    <td>제목:</td>
+                    <td><%= board.title %></td>
+                </tr>
+                <tr>
+                    <td>작성:</td>
+                    <td><%= board.author %></td>
+                </tr>
+                <tr>
+                    <td>작성일:</td>
+                    <td><%= board.createdAt %></td>
+                </tr>
+                
+            </table>
+        </div>
+        <div class="content-box">
+            <h2>Content</h2>
+            <%= board.content %>
+            </div>
+        </div>
+        <br>
+        <div class="button-container">
+            <a href="/board/<%=board.id%>/update" class="button">수정</a>
+            <a href="#" class="button button-delete" data-board-id="<%=board.id%>">삭제</a>
+            <a href="/board" class="button">목록으로</a>
+            </div>
+
+        </div>
+        <script src="./js/delete.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Item Detail</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container my-4">
+      <h1>Item Detail</h1>
+
+      <h2>ID: <%= item.id %></h2>
+      <p>Status: <%= item.status %></p>
+      <p>SHPT #: <%= item.shpt %></p>
+      <p>Inquiry#: <%= item.iqr %></p>
+      <p>Shipper: <%= item.shpr %></p>
+      <p>Address: <%= item.address %></p>
+      <p>Contact: <%= item.contact %></p>
+      <p>Item: <%= item.item %></p>
+      <p>POL: <%= item.pol %></p>
+      <p>POD: <%= item.pod %></p>
+      <p>Mode: <%= item.mode %></p>
+      <p>Type: <%= item.type %></p>
+      <p>Detail: <%= item.cost_detail %></p>
+      <p>원가: <%= item.cost %></p>
+      <p>원가 세부: <%= item.selling_detail %></p>
+      <p>청구가: <%= item.selling %></p>
+      <p>청구 세부: <%= item.profit %></p>
+      <p>Order Date: <%= item.order_date %></p>
+      <p>ETD: <%= item.etd %></p>
+      <!-- Add all other fields here in a similar manner -->
+
+      <a href="/quote" class="btn btn-primary mt-3">Back to List</a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

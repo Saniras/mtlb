@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/board/update.css" />
+    <title>NODEJS-CRUD-TEST</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2 class="form-title">게시글 수정</h2>
+      <form action="/board/<%= board.id %>/update" method="POST">
+        <div>
+          <label for="title">제목</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value="<%= board.title %>"
+          />
+        </div>
+        <div>
+          <label for="author">작성자</label>
+          <input
+            type="text"
+            id="author"
+            name="author"
+            value="<%= board.author %>"
+          />
+        </div>
+        <div>
+          <label for="content">Content</label>
+          <textarea id="content" name="content"><%= board.content %></textarea>
+        </div>
+        <div class="button-container">
+          <button type="submit" class="button">수정</button>
+          <a href="/board/<%=board.id%>" class="button">취소</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
