@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>MTL Dashboard</title>
+    <!-- plugins:css -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/feather/feather.css" />
+    <link rel="stylesheet" href="/mdi/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" src="/typicons/typicons.css" />
+    <link
+      rel="stylesheet"
+      href="/simple-line-icons/css/simple-line-icons.css"
+    />
+    <link rel="stylesheet" href="/css/vendor.bundle.base.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- endinject -->
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <script src="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.Default.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+  </head>
+
+  <body>
+    <!-- partial -->
+    <!-- partial:../../partials/_sidebar.html -->
+    <!---------------------------------------------------------------------------------------------------------------------->
+    <!----SideBar End----------------------------------------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------------------------------------------->
+
+    <!---------------------------------------------------------------------------------------------------------------------->
+    <!----SideBar End----------------------------------------------------------------------------------------------------------------->
+    <!---------------------------------------------------------------------------------------------------------------------->
+    <!-- partial -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Port Map</h4>
+                <div id="map" style="width: 100%; height: 400px"></div>
+                <input
+                  id="search"
+                  class="search-ui"
+                  placeholder="Enter Port Name"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Real-Time Data</h4>
+                <p class="card-subtitle">
+                  [Port의 Status를 클릭하면 나옵니다!]
+                </p>
+                <div class="myChartDiv">
+                  <div id="mypieChart">
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div
+                class="statistics-details d-flex align-items-center justify-content-between"
+              >
+                <div class="col-sm-3 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Area chart</h4>
+                      <canvas id="areaChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Doughnut chart</h4>
+                      <canvas id="doughnutChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Doughnut chart</h4>
+                      <canvas id="scatterChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Line chart</h4>
+                      <canvas id="lineChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Hoverable Table</h4>
+                  <p class="card-description">
+                    Add class <code>.table-hover</code>
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>User</th>
+                          <th>Product</th>
+                          <th>Sale</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Jacob</td>
+                          <td>Photoshop</td>
+                          <td class="text-danger">
+                            28.76% <i class="ti-arrow-down"></i>
+                          </td>
+                          <td>
+                            <label class="badge badge-danger">Pending</label>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Messsy</td>
+                          <td>Flash</td>
+                          <td class="text-danger">
+                            21.06% <i class="ti-arrow-down"></i>
+                          </td>
+                          <td>
+                            <label class="badge badge-warning"
+                              >In progress</label
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Premier</td>
+                          <td class="text-danger">
+                            35.00% <i class="ti-arrow-down"></i>
+                          </td>
+                          <td><label class="badge badge-info">Fixed</label></td>
+                        </tr>
+                        <tr>
+                          <td>Peter</td>
+                          <td>After effects</td>
+                          <td class="text-success">
+                            82.00% <i class="ti-arrow-up"></i>
+                          </td>
+                          <td>
+                            <label class="badge badge-success">Completed</label>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Dave</td>
+                          <td>53275535</td>
+                          <td class="text-success">
+                            98.05% <i class="ti-arrow-up"></i>
+                          </td>
+                          <td>
+                            <label class="badge badge-warning"
+                              >In progress</label
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Hoverable Table</h4>
+                  <p class="card-description">
+                    Add class <code>.table-hover</code>
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>User</th>
+                          <th>Product</th>
+                          <th>Sale</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Jacob</td>
+                          <td>Photoshop</td>
+                          <td class="text-danger">
+                            28.76% <i class="ti-arrow-down"></i>
+                          </td>
+                          <td>
+                            <label class="badge badge-danger">Pending</label>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Messsy</td>
+                          <td>Flash</td>
+                          <td class="text-danger">
+                            21.06% <i class="ti-arrow-down"></i>
+                          </td>
+                          <td>
+                            <label class="badge badge-warning"
+                              >In progress</label
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>John</td>
+                          <td>Premier</td>
+                          <td class="text-danger">
+                            35.00% <i class="ti-arrow-down"></i>
+                          </td>
+                          <td><label class="badge badge-info">Fixed</label></td>
+                        </tr>
+                        <tr>
+                          <td>Peter</td>
+                          <td>After effects</td>
+                          <td class="text-success">
+                            82.00% <i class="ti-arrow-up"></i>
+                          </td>
+                          <td>
+                            <label class="badge badge-success">Completed</label>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Dave</td>
+                          <td>53275535</td>
+                          <td class="text-success">
+                            98.05% <i class="ti-arrow-up"></i>
+                          </td>
+                          <td>
+                            <label class="badge badge-warning"
+                              >In progress</label
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+            <footer class="footer">
+              <div
+                class="d-sm-flex justify-content-center justify-content-sm-between"
+              >
+                <span
+                  class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+                  >Premium
+                  <a href="https://www.bootstrapdash.com/" target="_blank"
+                    >Bootstrap admin template</a
+                  >
+                  from BootstrapDash.</span
+                >
+                <span
+                  class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+                  >Copyright © 2021. All rights reserved.</span
+                >
+              </div>
+            </footer>
+            <!-- partial -->
+          </div>
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+
+    <!-- container-scroller -->
+
+    <script>
+      function generatePopupHtml(stations) {
+        return `
+      <div id="coverageMapPopup" class="row" style="display: block;">
+        <h1><span class="badge" id="coverageMapStationID">${stations.id}</span>
+          <span id="coverageMapStationName">${stations.name}</span></h1>
+        <button class="button" id="coverageMapStationButton" onclick="loadStationData(${stations.id})">Status</button>
+        <div id="coverageMapPopupClose">x</div>
+      </div>
+    `;
+      }
+
+      async function loadStationData(stationId) {
+        // ... rest of your code ...
+        try {
+          const [
+            realtimeData,
+            weeklyStatsData,
+            monthlyStatsData,
+            yearlyStatsData,
+          ] = await Promise.all([
+            fetch(`/api/stations/${stationId}/realtime`).then((response) =>
+              response.json()
+            ),
+            fetch(`/api/stations/${stationId}/weekly-statistics`).then(
+              (response) => response.json()
+            ),
+            fetch(`/api/stations/${stationId}/monthly-statistics`).then(
+              (response) => response.json()
+            ),
+            fetch(`/api/stations/${stationId}/yearly-statistics`).then(
+              (response) => response.json()
+            ),
+          ]);
+
+          createPieChart(realtimeData.shipType);
+
+          // Use the data to update the page...
+          // This depends on how your page is structured and how you want to display the data
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      var map = L.map("map").setView([46, 13.5], 2);
+
+      L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+        {
+          maxZoom: 19,
+          attribution:
+            '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }
+      ).addTo(map);
+
+      // Icons
+      var icon0 = L.icon({
+        iconUrl: "https://www.aishub.net/images/map/@2/type/64s.png",
+        iconSize: [17, 17],
+      });
+
+      var icon1 = L.icon({
+        iconUrl: "https://www.aishub.net/images/map/@2/type/4s.png",
+        iconSize: [17, 17],
+      });
+
+      // Fetch data
+      fetch("/api/data")
+        .then((response) => response.json())
+        .then((data) => {
+          data.stations.forEach((stations) => {
+            var icon = stations.status === 0 ? icon0 : icon1;
+            var marker = L.marker([stations.lat, stations.lon], {
+              icon: icon,
+            }).addTo(map);
+            var popupHtml = generatePopupHtml(stations);
+            marker.bindPopup(popupHtml);
+            marker.on("click", function () {
+              // Handle the marker click event here
+              // This is where you could call `loadStationData()`
+              loadStationsData(stations.id);
+
+              $("#search").keyup(search);
+            });
+          });
+        })
+        .catch((error) => console.error("Error:", error));
+    </script>
+
+    <!-------------------------------------------------------------------------------------------------------------------------------->
+    <!-- pie chart -->
+    <!-------------------------------------------------------------------------------------------------------------------------------->
+
+    <script>
+      // URLs to fetch data from
+      function createPieChart(shipTypeData) {
+        // Create pie chart after fetching data
+        let ctx = document.getElementById("myPieChart").getContext("2d");
+        let myPieChart = new Chart(ctx, {
+          type: "pie",
+          data: {
+            labels: shipTypeData.labels,
+            datasets: [
+              {
+                label: "Labels",
+                data: shipTypeData.datasets[0].data,
+                backgroundColor: shipTypeData.datasets[0].backgroundColor,
+                borderColor: ["rgba(75, 192, 192, 1)", "rgba(255, 99, 132, 1)"],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            title: {
+              display: true,
+              text: "Real-Time Data",
+            },
+            legend: {
+              position: "right",
+              labels: {
+                generateLabels: function (chart) {
+                  var data = chart.data;
+                  if (data.labels.length && data.datasets.length) {
+                    return data.labels.map(function (label, i) {
+                      var total = data.datasets[0].data.reduce(
+                        (a, b) => a + b,
+                        0
+                      );
+                      var value = data.datasets[0].data[i];
+                      var percentage = ((value / total) * 100).toFixed(2);
+                      return {
+                        // And finally :
+                        text: label + ": " + percentage + "%",
+                        fillStyle: data.datasets[0].backgroundColor[i],
+                        hidden: isNaN(value),
+
+                        // Extra data used for toggling the correct item
+                        index: i,
+                      };
+                    });
+                  } else {
+                    return [];
+                  }
+                },
+              },
+            },
+            animation: {
+              animateScale: true,
+              animateRotate: true,
+            },
+          },
+        });
+      }
+    </script>
+
+    <script src="/js/portInfo.js"></script>
+    <!-- plugins:js -->
+    <script src="/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="/chart.js/Chart.min.js"></script>
+    <script src="/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="/jss/off-canvas.js"></script>
+    <script src="/jss/hoverable-collapse.js"></script>
+    <script src="/jss/template.js"></script>
+    <script src="/jss/settings.js"></script>
+    <script src="/jss/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="/jss/chart.js"></script>
+    <!-- End custom js for this page-->
+  </body>
+</html>
