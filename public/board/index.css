@@ -1,0 +1,99 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.board-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.board-list {
+  width: 80%;
+  border-collapse: collapse;
+}
+.board-list th,
+.board-list td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+.board-list th {
+  background-color: #f2f2f2;
+  font-size: 18px;
+  font-weight: bold;
+}
+.board-write {
+  margin-top: 50px;
+}
+.board-write button {
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+h1 {
+  margin-bottom: 1em;
+}
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1mm;
+  width: 80%;
+  margin: auto;
+  flex-direction: row;
+}
+.btn-write {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.btn-write:hover {
+  background-color: #3e8e41;
+}
+table {
+  width: 80%;
+  margin: auto;
+}
+table th,
+table td {
+  padding: 10px;
+  text-align: center;
+}
+table th {
+  background-color: #f2f2f2;
+}
+th,
+td {
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+th {
+  font-weight: bold;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
